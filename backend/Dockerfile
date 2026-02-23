@@ -2,7 +2,6 @@ FROM node:20-bookworm-slim
 
 WORKDIR /app
 
-ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV npm_config_audit=false npm_config_fund=false npm_config_update_notifier=false
 
@@ -12,10 +11,12 @@ RUN apt-get update -y \
 
 COPY package.json package-lock.json* ./
 COPY prisma ./prisma
-RUN npm install --ignore-scripts
+RUN npm ci --include=dev --ignore-scripts
 
 COPY . .
 RUN npm rebuild && npm run postinstall && npm run build
+
+ENV NODE_ENV=production
 
 EXPOSE 3000
 
