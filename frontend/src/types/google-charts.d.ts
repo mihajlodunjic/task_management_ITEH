@@ -7,6 +7,8 @@ declare global {
     packages: GoogleChartsPackage[]
   }
 
+
+  
   interface GooglePieChartOptions {
     backgroundColor: string
     chartArea: {
