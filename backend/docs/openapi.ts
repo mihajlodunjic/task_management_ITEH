@@ -31,6 +31,7 @@ const methods: HttpMethod[] = [
   "head"
 ];
 
+
 function buildResponse(response: RouteResponseContract) {
   if (!response.schema) {
     return { description: response.description };
